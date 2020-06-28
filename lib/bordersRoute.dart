@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:BorderRulz/home.dart';
+import 'package:BorderRulz/placeRoute.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -85,6 +86,12 @@ class _BordersRouteState extends State<BordersRoute> {
           return ListTile(
             title: Text(_places[index].name),
             subtitle: Text(_places[index].address),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => PlaceRoute(_places[index])));
+            },
           );
         });
   }
