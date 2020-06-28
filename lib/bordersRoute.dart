@@ -1,5 +1,11 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:BorderRulz/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import 'model/place.dart';
 
 class BordersRoute extends StatefulWidget {
   final String from;
@@ -13,636 +19,695 @@ class BordersRoute extends StatefulWidget {
 class _BordersRouteState extends State<BordersRoute> {
   final String from;
   final String to;
+  List<Place> _places = [];
+  final turquesa = Color(0xff0bc2c2);
+
   _BordersRouteState(this.from, this.to);
 
   @override
+  void initState() {
+    super.initState();
+    _loadPlaces();
+  }
+
+  Future<List<Place>> returnObservations(String name) async {
+    final file = await DefaultAssetBundle.of(context).loadString(name);
+    List<dynamic> d = json.decode(file);
+    return d.map<Place>((e) => Place.fromJson(e)).toList();
+  }
+
+  _loadPlaces() async {
+    _places = await returnObservations('assets/json/route.json');
+    setState(() {
+      print(_places.length);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return _route(this.from, this.to);
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'LOCATION',
+          style: TextStyle(
+            fontFamily: 'Ubuntu',
+            fontSize: 16,
+            color: const Color(0xff0bc2c2),
+            fontWeight: FontWeight.w700,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        centerTitle: true,
+        leading: new IconButton(
+          icon: new Icon(
+            Icons.arrow_back,
+            color: Colors.grey,
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Home()),
+            );
+          },
+        ),
+      ),
+      backgroundColor: const Color(0xffffffff),
+      body: _myListView(context),
+    );
+  }
+
+  Widget _myListView(BuildContext context) {
+    return ListView.builder(
+        itemCount: _places == null ? 0 : _places.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(_places[index].name),
+            subtitle: Text(_places[index].address),
+          );
+        });
   }
 }
 
-Widget _route(String from, String to) {
-  return Scaffold(
-    backgroundColor: const Color(0xffffffff),
-    body: Stack(
-      children: <Widget>[
-        Transform.translate(
-          offset: Offset(-221.25, -136.77),
-          child: SvgPicture.string(
-            _svg_duylqk,
-            allowDrawingOutsideViewBox: true,
-          ),
-        ),
-        Transform.translate(
-          offset: Offset(24.0, 32.98),
-          child:
-              // Adobe XD layer: 'Arrow' (group)
-              Stack(
-            children: <Widget>[
-              Transform.translate(
-                offset: Offset(51.0, 136.02),
-                child:
-                    // Adobe XD layer: 'Rectangle 1291' (shape)
-                    Container(
-                  width: 2.0,
-                  height: 79.0,
-                  decoration: BoxDecoration(
-                    color: const Color(0xff0bc2c2),
-                  ),
-                ),
-              ),
-              Transform.translate(
-                offset: Offset(45.0, 208.02),
-                child:
-                    // Adobe XD layer: 'Path 264' (shape)
-                    SvgPicture.string(
-                  _svg_c5pnwb,
-                  allowDrawingOutsideViewBox: true,
-                ),
-              ),
-            ],
-          ),
-        ),
-        Transform.translate(
-          offset: Offset(24.0, 48.0),
-          child:
-              // Adobe XD layer: 'Arrow' (group)
-              Stack(
-            children: <Widget>[
-              Transform.translate(
-                offset: Offset(51.0, 276.0),
-                child:
-                    // Adobe XD layer: 'Rectangle 1292' (shape)
-                    Container(
-                  width: 2.0,
-                  height: 98.0,
-                  decoration: BoxDecoration(
-                    color: const Color(0xff0bc2c2),
-                  ),
-                ),
-              ),
-              Transform.translate(
-                offset: Offset(45.0, 367.0),
-                child:
-                    // Adobe XD layer: 'Path 265' (shape)
-                    SvgPicture.string(
-                  _svg_2yy9aj,
-                  allowDrawingOutsideViewBox: true,
-                ),
-              ),
-            ],
-          ),
-        ),
-        Transform.translate(
-          offset: Offset(113.0, 125.0),
-          child:
-              // Adobe XD layer: 'Current Location' (text)
-              Text(
-            'Current Location',
-            style: TextStyle(
-              fontFamily: 'Ubuntu',
-              fontSize: 14,
-              color: const Color(0xff0bc2c2),
-              fontWeight: FontWeight.w700,
-            ),
-            textAlign: TextAlign.left,
-          ),
-        ),
-        Transform.translate(
-          offset: Offset(113.0, 147.0),
-          child:
-              // Adobe XD layer: '497 Evergreen Rd. R…' (text)
-              Text(
-            from,
-            style: TextStyle(
-              fontFamily: 'Ubuntu',
-              fontSize: 14,
-              color: const Color(0xff707070),
-              fontWeight: FontWeight.w300,
-            ),
-            textAlign: TextAlign.left,
-          ),
-        ),
-        Stack(
-          children: <Widget>[
-            Transform.translate(
-              offset: Offset(51.0, 111.0),
-              child:
-                  // Adobe XD layer: 'Ellipse 282' (shape)
-                  Container(
-                width: 50.0,
-                height: 50.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.elliptical(25.0, 25.0)),
-                  color: const Color(0xff0bc2c2),
-                  boxShadow: [
-                    BoxShadow(
-                      color: const Color(0x29000000),
-                      offset: Offset(0, 3),
-                      blurRadius: 6,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Transform.translate(
-              offset: Offset(64.0, 125.0),
-              child:
-                  // Adobe XD layer: '7km' (text)
-                  Text(
-                'PT',
-                style: TextStyle(
-                  fontFamily: 'Ubuntu',
-                  fontSize: 20,
-                  color: const Color(0xffffffff),
-                  fontWeight: FontWeight.w700,
-                ),
-                textAlign: TextAlign.left,
-              ),
-            ),
-          ],
-        ),
-        Transform.translate(
-          offset: Offset(0.0, 150.0),
-          child: Stack(
-            children: <Widget>[
-              Transform.translate(
-                offset: Offset(51.0, 111.0),
-                child:
-                    // Adobe XD layer: 'Ellipse 282' (shape)
-                    Container(
-                  width: 50.0,
-                  height: 50.0,
-                  decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.all(Radius.elliptical(25.0, 25.0)),
-                    color: const Color(0xff0bc2c2),
-                    border:
-                        Border.all(width: 4.0, color: const Color(0xfffbfbfb)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: const Color(0x29000000),
-                        offset: Offset(0, 3),
-                        blurRadius: 6,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Transform.translate(
-                offset: Offset(64.0, 125.0),
-                child:
-                    // Adobe XD layer: '7km' (text)
-                    Text(
-                  'FR',
-                  style: TextStyle(
-                    fontFamily: 'Ubuntu',
-                    fontSize: 20,
-                    color: const Color(0xffffffff),
-                    fontWeight: FontWeight.w700,
-                  ),
-                  textAlign: TextAlign.left,
-                ),
-              ),
-            ],
-          ),
-        ),
-        Transform.translate(
-          offset: Offset(0.0, 320.0),
-          child: Stack(
-            children: <Widget>[
-              Transform.translate(
-                offset: Offset(51.0, 111.0),
-                child:
-                    // Adobe XD layer: 'Ellipse 282' (shape)
-                    Container(
-                  width: 50.0,
-                  height: 50.0,
-                  decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.all(Radius.elliptical(25.0, 25.0)),
-                    color: const Color(0xff0bc2c2),
-                    boxShadow: [
-                      BoxShadow(
-                        color: const Color(0x29000000),
-                        offset: Offset(0, 3),
-                        blurRadius: 6,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Transform.translate(
-                offset: Offset(57.0, 125.0),
-                child:
-                    // Adobe XD layer: '7km' (text)
-                    Text(
-                  'SLO',
-                  style: TextStyle(
-                    fontFamily: 'Ubuntu',
-                    fontSize: 20,
-                    color: const Color(0xffffffff),
-                    fontWeight: FontWeight.w700,
-                  ),
-                  textAlign: TextAlign.left,
-                ),
-              ),
-            ],
-          ),
-        ),
-        Transform.translate(
-          offset: Offset(113.0, 274.0),
-          child:
-              // Adobe XD layer: 'Morning Cafe' (text)
-              Text(
-            'France',
-            style: TextStyle(
-              fontFamily: 'Ubuntu',
-              fontSize: 14,
-              color: const Color(0xff0bc2c2),
-              fontWeight: FontWeight.w700,
-            ),
-            textAlign: TextAlign.left,
-          ),
-        ),
-        Transform.translate(
-          offset: Offset(113.0, 296.0),
-          child:
-              // Adobe XD layer: 'To 89 Palmspring Wa…' (text)
-              Text(
-            'Champ Elysee Paris 1,\n39847 Paris',
-            style: TextStyle(
-              fontFamily: 'Ubuntu',
-              fontSize: 14,
-              color: const Color(0xff707070),
-              fontWeight: FontWeight.w300,
-            ),
-            textAlign: TextAlign.left,
-          ),
-        ),
-        Transform.translate(
-          offset: Offset(307.0, 274.0),
-          child:
-              // Adobe XD layer: 'Symbol 71 – 9' (group)
-              Stack(
-            children: <Widget>[
-              // Adobe XD layer: 'Rectangle 1445' (shape)
-              Container(
-                width: 16.0,
-                height: 16.0,
-                decoration: BoxDecoration(),
-              ),
-            ],
-          ),
-        ),
-        Transform.translate(
-          offset: Offset(113.0, 446.0),
-          child:
-              // Adobe XD layer: 'Work' (text)
-              Text(
-            to,
-            style: TextStyle(
-              fontFamily: 'Ubuntu',
-              fontSize: 14,
-              color: const Color(0xff0bc2c2),
-              fontWeight: FontWeight.w700,
-            ),
-            textAlign: TextAlign.left,
-          ),
-        ),
-        Transform.translate(
-          offset: Offset(113.0, 468.0),
-          child:
-              // Adobe XD layer: '497 Evergreen Rd. R…' (text)
-              Text(
-            'Trg Revolucije 99, \n1000 Ljubljana',
-            style: TextStyle(
-              fontFamily: 'Ubuntu',
-              fontSize: 14,
-              color: const Color(0xff707070),
-              fontWeight: FontWeight.w300,
-            ),
-            textAlign: TextAlign.left,
-          ),
-        ),
-        Transform.translate(
-          offset: Offset(16.0, 36.0),
-          child: Stack(
-            children: <Widget>[
-              Transform.translate(
-                offset: Offset(0.0, -1.0),
-                child:
-                    // Adobe XD layer: 'Path 10' (shape)
-                    SvgPicture.string(
-                  _svg_ruau5s,
-                  allowDrawingOutsideViewBox: true,
-                ),
-              ),
-            ],
-          ),
-        ),
-        Transform.translate(
-          offset: Offset(131.0, 34.0),
-          child:
-              // Adobe XD layer: 'LOCATION' (text)
-              SizedBox(
-            width: 98.0,
-            child: Text(
-              'LOCATION',
-              style: TextStyle(
-                fontFamily: 'Ubuntu',
-                fontSize: 16,
-                color: const Color(0xff0bc2c2),
-                fontWeight: FontWeight.w700,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
-        Stack(
-          children: <Widget>[
-            Transform.translate(
-              offset: Offset(101.0, -67.0),
-              child: Stack(
-                children: <Widget>[
-                  Transform.translate(
-                    offset: Offset(51.0, 258.0),
-                    child:
-                        // Adobe XD layer: 'Ellipse 283' (shape)
-                        Container(
-                      width: 32.0,
-                      height: 32.0,
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.all(Radius.elliptical(16.0, 16.0)),
-                        color: const Color(0xffffffff),
-                        border: Border.all(
-                            width: 3.0, color: const Color(0xff959595)),
-                        boxShadow: [
-                          BoxShadow(
-                            color: const Color(0x29000000),
-                            offset: Offset(0, 3),
-                            blurRadius: 6,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Transform.translate(
-              offset: Offset(162.0, 201.0),
-              child:
-                  // Adobe XD layer: 'Flight' (component)
-                  _flight(),
-            ),
-          ],
-        ),
-        Transform.translate(
-          offset: Offset(0.0, 321.0),
-          child: Stack(
-            children: <Widget>[
-              Transform.translate(
-                offset: Offset(101.0, -67.0),
-                child: Stack(
-                  children: <Widget>[
-                    Transform.translate(
-                      offset: Offset(51.0, 258.0),
-                      child:
-                          // Adobe XD layer: 'Ellipse 283' (shape)
-                          Container(
-                        width: 32.0,
-                        height: 32.0,
-                        decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.all(Radius.elliptical(16.0, 16.0)),
-                          color: const Color(0xffffffff),
-                          border: Border.all(
-                              width: 3.0, color: const Color(0xff959595)),
-                          boxShadow: [
-                            BoxShadow(
-                              color: const Color(0x29000000),
-                              offset: Offset(0, 3),
-                              blurRadius: 6,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Transform.translate(
-                offset: Offset(162.0, 201.0),
-                child:
-                    // Adobe XD layer: 'Flight' (component)
-                    _flight(),
-              ),
-            ],
-          ),
-        ),
-        Stack(
-          children: <Widget>[
-            Transform.translate(
-              offset: Offset(62.0, -67.0),
-              child: Stack(
-                children: <Widget>[
-                  Transform.translate(
-                    offset: Offset(51.0, 258.0),
-                    child:
-                        // Adobe XD layer: 'Ellipse 283' (shape)
-                        Container(
-                      width: 32.0,
-                      height: 32.0,
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.all(Radius.elliptical(16.0, 16.0)),
-                        color: const Color(0xffffffff),
-                        border: Border.all(
-                            width: 3.0, color: const Color(0xff0bc2c2)),
-                        boxShadow: [
-                          BoxShadow(
-                            color: const Color(0x29000000),
-                            offset: Offset(0, 3),
-                            blurRadius: 6,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Transform(
-              transform: Matrix4(1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0,
-                  0.0, 1.0, 0.0, 121.0, 201.0, 0.0, 1.0),
-              child:
-                  // Adobe XD layer: 'Car' (component)
-                  _flight(),
-            ),
-          ],
-        ),
-        Transform.translate(
-          offset: Offset(0.0, 321.0),
-          child: Stack(
-            children: <Widget>[
-              Transform.translate(
-                offset: Offset(62.0, -67.0),
-                child: Stack(
-                  children: <Widget>[
-                    Transform.translate(
-                      offset: Offset(51.0, 258.0),
-                      child:
-                          // Adobe XD layer: 'Ellipse 283' (shape)
-                          Container(
-                        width: 32.0,
-                        height: 32.0,
-                        decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.all(Radius.elliptical(16.0, 16.0)),
-                          color: const Color(0xffffffff),
-                          border: Border.all(
-                              width: 3.0, color: const Color(0xff0bc2c2)),
-                          boxShadow: [
-                            BoxShadow(
-                              color: const Color(0x29000000),
-                              offset: Offset(0, 3),
-                              blurRadius: 6,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Transform(
-                transform: Matrix4(1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0,
-                    0.0, 1.0, 0.0, 121.0, 201.0, 0.0, 1.0),
-                child:
-                    // Adobe XD layer: 'Car' (component)
-                    _flight(),
-              ),
-            ],
-          ),
-        ),
-        Stack(
-          children: <Widget>[
-            Transform.translate(
-              offset: Offset(140.0, -67.0),
-              child: Stack(
-                children: <Widget>[
-                  Transform.translate(
-                    offset: Offset(51.0, 258.0),
-                    child:
-                        // Adobe XD layer: 'Ellipse 283' (shape)
-                        Container(
-                      width: 32.0,
-                      height: 32.0,
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.all(Radius.elliptical(16.0, 16.0)),
-                        color: const Color(0xffffffff),
-                        border: Border.all(
-                            width: 3.0, color: const Color(0xff959595)),
-                        boxShadow: [
-                          BoxShadow(
-                            color: const Color(0x29000000),
-                            offset: Offset(0, 3),
-                            blurRadius: 6,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Transform.translate(
-              offset: Offset(202.0, 201.0),
-              child:
-                  // Adobe XD layer: 'Train' (component)
-                  _flight(),
-            ),
-          ],
-        ),
-        Transform.translate(
-          offset: Offset(0.0, 321.0),
-          child: Stack(
-            children: <Widget>[
-              Transform.translate(
-                offset: Offset(140.0, -67.0),
-                child: Stack(
-                  children: <Widget>[
-                    Transform.translate(
-                      offset: Offset(51.0, 258.0),
-                      child:
-                          // Adobe XD layer: 'Ellipse 283' (shape)
-                          Container(
-                        width: 32.0,
-                        height: 32.0,
-                        decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.all(Radius.elliptical(16.0, 16.0)),
-                          color: const Color(0xffffffff),
-                          border: Border.all(
-                              width: 3.0, color: const Color(0xff959595)),
-                          boxShadow: [
-                            BoxShadow(
-                              color: const Color(0x29000000),
-                              offset: Offset(0, 3),
-                              blurRadius: 6,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Transform.translate(
-                offset: Offset(202.0, 201.0),
-                child:
-                    // Adobe XD layer: 'Train' (component)
-                    _flight(),
-              ),
-            ],
-          ),
-        ),
-        Transform.translate(
-          offset: Offset(152.0, 340.0),
-          child:
-              // Adobe XD layer: 'fly' (component)
-              _flight(),
-        ),
-        Transform.translate(
-          offset: Offset(113.0, 340.0),
-          child:
-              // Adobe XD layer: 'car' (component)
-              _flight(),
-        ),
-        Transform.translate(
-          offset: Offset(191.0, 340.0),
-          child:
-              // Adobe XD layer: 'train' (component)
-              _flight(),
-        ),
-        Transform.translate(
-          offset: Offset(46.0, 257.0),
-          child: Container(
-            width: 60.0,
-            height: 60.0,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.elliptical(30.0, 30.0)),
-              border: Border.all(width: 1.0, color: const Color(0xff2ec19e)),
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
-}
+//   body: Stack(
+//     children: <Widget>[
+//       Transform.translate(
+//         offset: Offset(-221.25, -136.77),
+//         child: SvgPicture.string(
+//           _svg_duylqk,
+//           allowDrawingOutsideViewBox: true,
+//         ),
+//       ),
+//       Transform.translate(
+//         offset: Offset(24.0, 32.98),
+//         child:
+//             // Adobe XD layer: 'Arrow' (group)
+//             Stack(
+//           children: <Widget>[
+//             Transform.translate(
+//               offset: Offset(51.0, 136.02),
+//               child:
+//                   // Adobe XD layer: 'Rectangle 1291' (shape)
+//                   Container(
+//                 width: 2.0,
+//                 height: 79.0,
+//                 decoration: BoxDecoration(
+//                   color: const Color(0xff0bc2c2),
+//                 ),
+//               ),
+//             ),
+//             Transform.translate(
+//               offset: Offset(45.0, 208.02),
+//               child:
+//                   // Adobe XD layer: 'Path 264' (shape)
+//                   SvgPicture.string(
+//                 _svg_c5pnwb,
+//                 allowDrawingOutsideViewBox: true,
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//       Transform.translate(
+//         offset: Offset(24.0, 48.0),
+//         child:
+//             // Adobe XD layer: 'Arrow' (group)
+//             Stack(
+//           children: <Widget>[
+//             Transform.translate(
+//               offset: Offset(51.0, 276.0),
+//               child:
+//                   // Adobe XD layer: 'Rectangle 1292' (shape)
+//                   Container(
+//                 width: 2.0,
+//                 height: 98.0,
+//                 decoration: BoxDecoration(
+//                   color: const Color(0xff0bc2c2),
+//                 ),
+//               ),
+//             ),
+//             Transform.translate(
+//               offset: Offset(45.0, 367.0),
+//               child:
+//                   // Adobe XD layer: 'Path 265' (shape)
+//                   SvgPicture.string(
+//                 _svg_2yy9aj,
+//                 allowDrawingOutsideViewBox: true,
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//       Transform.translate(
+//         offset: Offset(113.0, 125.0),
+//         child:
+//             // Adobe XD layer: 'Current Location' (text)
+//             Text(
+//           'Current Location',
+//           style: TextStyle(
+//             fontFamily: 'Ubuntu',
+//             fontSize: 14,
+//             color: const Color(0xff0bc2c2),
+//             fontWeight: FontWeight.w700,
+//           ),
+//           textAlign: TextAlign.left,
+//         ),
+//       ),
+//       Transform.translate(
+//         offset: Offset(113.0, 147.0),
+//         child:
+//             // Adobe XD layer: '497 Evergreen Rd. R…' (text)
+//             Text(
+//           from,
+//           style: TextStyle(
+//             fontFamily: 'Ubuntu',
+//             fontSize: 14,
+//             color: const Color(0xff707070),
+//             fontWeight: FontWeight.w300,
+//           ),
+//           textAlign: TextAlign.left,
+//         ),
+//       ),
+//       Stack(
+//         children: <Widget>[
+//           Transform.translate(
+//             offset: Offset(51.0, 111.0),
+//             child:
+//                 // Adobe XD layer: 'Ellipse 282' (shape)
+//                 Container(
+//               width: 50.0,
+//               height: 50.0,
+//               decoration: BoxDecoration(
+//                 borderRadius: BorderRadius.all(Radius.elliptical(25.0, 25.0)),
+//                 color: const Color(0xff0bc2c2),
+//                 boxShadow: [
+//                   BoxShadow(
+//                     color: const Color(0x29000000),
+//                     offset: Offset(0, 3),
+//                     blurRadius: 6,
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ),
+//           Transform.translate(
+//             offset: Offset(64.0, 125.0),
+//             child:
+//                 // Adobe XD layer: '7km' (text)
+//                 Text(
+//               'PT',
+//               style: TextStyle(
+//                 fontFamily: 'Ubuntu',
+//                 fontSize: 20,
+//                 color: const Color(0xffffffff),
+//                 fontWeight: FontWeight.w700,
+//               ),
+//               textAlign: TextAlign.left,
+//             ),
+//           ),
+//         ],
+//       ),
+//       Transform.translate(
+//         offset: Offset(0.0, 150.0),
+//         child: Stack(
+//           children: <Widget>[
+//             Transform.translate(
+//               offset: Offset(51.0, 111.0),
+//               child:
+//                   // Adobe XD layer: 'Ellipse 282' (shape)
+//                   Container(
+//                 width: 50.0,
+//                 height: 50.0,
+//                 decoration: BoxDecoration(
+//                   borderRadius:
+//                       BorderRadius.all(Radius.elliptical(25.0, 25.0)),
+//                   color: const Color(0xff0bc2c2),
+//                   border:
+//                       Border.all(width: 4.0, color: const Color(0xfffbfbfb)),
+//                   boxShadow: [
+//                     BoxShadow(
+//                       color: const Color(0x29000000),
+//                       offset: Offset(0, 3),
+//                       blurRadius: 6,
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//             ),
+//             Transform.translate(
+//               offset: Offset(64.0, 125.0),
+//               child:
+//                   // Adobe XD layer: '7km' (text)
+//                   Text(
+//                 'FR',
+//                 style: TextStyle(
+//                   fontFamily: 'Ubuntu',
+//                   fontSize: 20,
+//                   color: const Color(0xffffffff),
+//                   fontWeight: FontWeight.w700,
+//                 ),
+//                 textAlign: TextAlign.left,
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//       Transform.translate(
+//         offset: Offset(0.0, 320.0),
+//         child: Stack(
+//           children: <Widget>[
+//             Transform.translate(
+//               offset: Offset(51.0, 111.0),
+//               child:
+//                   // Adobe XD layer: 'Ellipse 282' (shape)
+//                   Container(
+//                 width: 50.0,
+//                 height: 50.0,
+//                 decoration: BoxDecoration(
+//                   borderRadius:
+//                       BorderRadius.all(Radius.elliptical(25.0, 25.0)),
+//                   color: const Color(0xff0bc2c2),
+//                   boxShadow: [
+//                     BoxShadow(
+//                       color: const Color(0x29000000),
+//                       offset: Offset(0, 3),
+//                       blurRadius: 6,
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//             ),
+//             Transform.translate(
+//               offset: Offset(57.0, 125.0),
+//               child:
+//                   // Adobe XD layer: '7km' (text)
+//                   Text(
+//                 'SLO',
+//                 style: TextStyle(
+//                   fontFamily: 'Ubuntu',
+//                   fontSize: 20,
+//                   color: const Color(0xffffffff),
+//                   fontWeight: FontWeight.w700,
+//                 ),
+//                 textAlign: TextAlign.left,
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//       Transform.translate(
+//         offset: Offset(113.0, 274.0),
+//         child:
+//             // Adobe XD layer: 'Morning Cafe' (text)
+//             Text(
+//           'France',
+//           style: TextStyle(
+//             fontFamily: 'Ubuntu',
+//             fontSize: 14,
+//             color: const Color(0xff0bc2c2),
+//             fontWeight: FontWeight.w700,
+//           ),
+//           textAlign: TextAlign.left,
+//         ),
+//       ),
+//       Transform.translate(
+//         offset: Offset(113.0, 296.0),
+//         child:
+//             // Adobe XD layer: 'To 89 Palmspring Wa…' (text)
+//             Text(
+//           'Champ Elysee Paris 1,\n39847 Paris',
+//           style: TextStyle(
+//             fontFamily: 'Ubuntu',
+//             fontSize: 14,
+//             color: const Color(0xff707070),
+//             fontWeight: FontWeight.w300,
+//           ),
+//           textAlign: TextAlign.left,
+//         ),
+//       ),
+//       Transform.translate(
+//         offset: Offset(307.0, 274.0),
+//         child:
+//             // Adobe XD layer: 'Symbol 71 – 9' (group)
+//             Stack(
+//           children: <Widget>[
+//             // Adobe XD layer: 'Rectangle 1445' (shape)
+//             Container(
+//               width: 16.0,
+//               height: 16.0,
+//               decoration: BoxDecoration(),
+//             ),
+//           ],
+//         ),
+//       ),
+//       Transform.translate(
+//         offset: Offset(113.0, 446.0),
+//         child:
+//             // Adobe XD layer: 'Work' (text)
+//             Text(
+//           to,
+//           style: TextStyle(
+//             fontFamily: 'Ubuntu',
+//             fontSize: 14,
+//             color: const Color(0xff0bc2c2),
+//             fontWeight: FontWeight.w700,
+//           ),
+//           textAlign: TextAlign.left,
+//         ),
+//       ),
+//       Transform.translate(
+//         offset: Offset(113.0, 468.0),
+//         child:
+//             // Adobe XD layer: '497 Evergreen Rd. R…' (text)
+//             Text(
+//           'Trg Revolucije 99, \n1000 Ljubljana',
+//           style: TextStyle(
+//             fontFamily: 'Ubuntu',
+//             fontSize: 14,
+//             color: const Color(0xff707070),
+//             fontWeight: FontWeight.w300,
+//           ),
+//           textAlign: TextAlign.left,
+//         ),
+//       ),
+//       Transform.translate(
+//         offset: Offset(16.0, 36.0),
+//         child: Stack(
+//           children: <Widget>[
+//             Transform.translate(
+//               offset: Offset(0.0, -1.0),
+//               child:
+//                   // Adobe XD layer: 'Path 10' (shape)
+//                   SvgPicture.string(
+//                 _svg_ruau5s,
+//                 allowDrawingOutsideViewBox: true,
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//       // Transform.translate(
+//       //   offset: Offset(131.0, 34.0),
+//       //   child:
+//       //       // Adobe XD layer: 'LOCATION' (text)
+//       //       SizedBox(
+//       //     width: 98.0,
+//       //     child: Text(
+//       //       'LOCATION',
+//       //       style: TextStyle(
+//       //         fontFamily: 'Ubuntu',
+//       //         fontSize: 16,
+//       //         color: const Color(0xff0bc2c2),
+//       //         fontWeight: FontWeight.w700,
+//       //       ),
+//       //       textAlign: TextAlign.center,
+//       //     ),
+//       //   ),
+//       // ),
+//       Stack(
+//         children: <Widget>[
+//           Transform.translate(
+//             offset: Offset(101.0, -67.0),
+//             child: Stack(
+//               children: <Widget>[
+//                 Transform.translate(
+//                   offset: Offset(51.0, 258.0),
+//                   child:
+//                       // Adobe XD layer: 'Ellipse 283' (shape)
+//                       Container(
+//                     width: 32.0,
+//                     height: 32.0,
+//                     decoration: BoxDecoration(
+//                       borderRadius:
+//                           BorderRadius.all(Radius.elliptical(16.0, 16.0)),
+//                       color: const Color(0xffffffff),
+//                       border: Border.all(
+//                           width: 3.0, color: const Color(0xff959595)),
+//                       boxShadow: [
+//                         BoxShadow(
+//                           color: const Color(0x29000000),
+//                           offset: Offset(0, 3),
+//                           blurRadius: 6,
+//                         ),
+//                       ],
+//                     ),
+//                   ),
+//                 ),
+//               ],
+//             ),
+//           ),
+//           Transform.translate(
+//             offset: Offset(162.0, 201.0),
+//             child:
+//                 // Adobe XD layer: 'Flight' (component)
+//                 _flight(),
+//           ),
+//         ],
+//       ),
+//       Transform.translate(
+//         offset: Offset(0.0, 321.0),
+//         child: Stack(
+//           children: <Widget>[
+//             Transform.translate(
+//               offset: Offset(101.0, -67.0),
+//               child: Stack(
+//                 children: <Widget>[
+//                   Transform.translate(
+//                     offset: Offset(51.0, 258.0),
+//                     child:
+//                         // Adobe XD layer: 'Ellipse 283' (shape)
+//                         Container(
+//                       width: 32.0,
+//                       height: 32.0,
+//                       decoration: BoxDecoration(
+//                         borderRadius:
+//                             BorderRadius.all(Radius.elliptical(16.0, 16.0)),
+//                         color: const Color(0xffffffff),
+//                         border: Border.all(
+//                             width: 3.0, color: const Color(0xff959595)),
+//                         boxShadow: [
+//                           BoxShadow(
+//                             color: const Color(0x29000000),
+//                             offset: Offset(0, 3),
+//                             blurRadius: 6,
+//                           ),
+//                         ],
+//                       ),
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//             Transform.translate(
+//               offset: Offset(162.0, 201.0),
+//               child:
+//                   // Adobe XD layer: 'Flight' (component)
+//                   _flight(),
+//             ),
+//           ],
+//         ),
+//       ),
+//       Stack(
+//         children: <Widget>[
+//           Transform.translate(
+//             offset: Offset(62.0, -67.0),
+//             child: Stack(
+//               children: <Widget>[
+//                 Transform.translate(
+//                   offset: Offset(51.0, 258.0),
+//                   child:
+//                       // Adobe XD layer: 'Ellipse 283' (shape)
+//                       Container(
+//                     width: 32.0,
+//                     height: 32.0,
+//                     decoration: BoxDecoration(
+//                       borderRadius:
+//                           BorderRadius.all(Radius.elliptical(16.0, 16.0)),
+//                       color: const Color(0xffffffff),
+//                       border: Border.all(
+//                           width: 3.0, color: const Color(0xff0bc2c2)),
+//                       boxShadow: [
+//                         BoxShadow(
+//                           color: const Color(0x29000000),
+//                           offset: Offset(0, 3),
+//                           blurRadius: 6,
+//                         ),
+//                       ],
+//                     ),
+//                   ),
+//                 ),
+//               ],
+//             ),
+//           ),
+//           Transform(
+//             transform: Matrix4(1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0,
+//                 0.0, 1.0, 0.0, 121.0, 201.0, 0.0, 1.0),
+//             child:
+//                 // Adobe XD layer: 'Car' (component)
+//                 _flight(),
+//           ),
+//         ],
+//       ),
+//       Transform.translate(
+//         offset: Offset(0.0, 321.0),
+//         child: Stack(
+//           children: <Widget>[
+//             Transform.translate(
+//               offset: Offset(62.0, -67.0),
+//               child: Stack(
+//                 children: <Widget>[
+//                   Transform.translate(
+//                     offset: Offset(51.0, 258.0),
+//                     child:
+//                         // Adobe XD layer: 'Ellipse 283' (shape)
+//                         Container(
+//                       width: 32.0,
+//                       height: 32.0,
+//                       decoration: BoxDecoration(
+//                         borderRadius:
+//                             BorderRadius.all(Radius.elliptical(16.0, 16.0)),
+//                         color: const Color(0xffffffff),
+//                         border: Border.all(
+//                             width: 3.0, color: const Color(0xff0bc2c2)),
+//                         boxShadow: [
+//                           BoxShadow(
+//                             color: const Color(0x29000000),
+//                             offset: Offset(0, 3),
+//                             blurRadius: 6,
+//                           ),
+//                         ],
+//                       ),
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//             Transform(
+//               transform: Matrix4(1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0,
+//                   0.0, 1.0, 0.0, 121.0, 201.0, 0.0, 1.0),
+//               child:
+//                   // Adobe XD layer: 'Car' (component)
+//                   _flight(),
+//             ),
+//           ],
+//         ),
+//       ),
+//       Stack(
+//         children: <Widget>[
+//           Transform.translate(
+//             offset: Offset(140.0, -67.0),
+//             child: Stack(
+//               children: <Widget>[
+//                 Transform.translate(
+//                   offset: Offset(51.0, 258.0),
+//                   child:
+//                       // Adobe XD layer: 'Ellipse 283' (shape)
+//                       Container(
+//                     width: 32.0,
+//                     height: 32.0,
+//                     decoration: BoxDecoration(
+//                       borderRadius:
+//                           BorderRadius.all(Radius.elliptical(16.0, 16.0)),
+//                       color: const Color(0xffffffff),
+//                       border: Border.all(
+//                           width: 3.0, color: const Color(0xff959595)),
+//                       boxShadow: [
+//                         BoxShadow(
+//                           color: const Color(0x29000000),
+//                           offset: Offset(0, 3),
+//                           blurRadius: 6,
+//                         ),
+//                       ],
+//                     ),
+//                   ),
+//                 ),
+//               ],
+//             ),
+//           ),
+//           Transform.translate(
+//             offset: Offset(202.0, 201.0),
+//             child:
+//                 // Adobe XD layer: 'Train' (component)
+//                 _flight(),
+//           ),
+//         ],
+//       ),
+//       Transform.translate(
+//         offset: Offset(0.0, 321.0),
+//         child: Stack(
+//           children: <Widget>[
+//             Transform.translate(
+//               offset: Offset(140.0, -67.0),
+//               child: Stack(
+//                 children: <Widget>[
+//                   Transform.translate(
+//                     offset: Offset(51.0, 258.0),
+//                     child:
+//                         // Adobe XD layer: 'Ellipse 283' (shape)
+//                         Container(
+//                       width: 32.0,
+//                       height: 32.0,
+//                       decoration: BoxDecoration(
+//                         borderRadius:
+//                             BorderRadius.all(Radius.elliptical(16.0, 16.0)),
+//                         color: const Color(0xffffffff),
+//                         border: Border.all(
+//                             width: 3.0, color: const Color(0xff959595)),
+//                         boxShadow: [
+//                           BoxShadow(
+//                             color: const Color(0x29000000),
+//                             offset: Offset(0, 3),
+//                             blurRadius: 6,
+//                           ),
+//                         ],
+//                       ),
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//             Transform.translate(
+//               offset: Offset(202.0, 201.0),
+//               child:
+//                   // Adobe XD layer: 'Train' (component)
+//                   _flight(),
+//             ),
+//           ],
+//         ),
+//       ),
+//       Transform.translate(
+//         offset: Offset(152.0, 340.0),
+//         child:
+//             // Adobe XD layer: 'fly' (component)
+//             _flight(),
+//       ),
+//       Transform.translate(
+//         offset: Offset(113.0, 340.0),
+//         child:
+//             // Adobe XD layer: 'car' (component)
+//             _flight(),
+//       ),
+//       Transform.translate(
+//         offset: Offset(191.0, 340.0),
+//         child:
+//             // Adobe XD layer: 'train' (component)
+//             _flight(),
+//       ),
+//       Transform.translate(
+//         offset: Offset(46.0, 257.0),
+//         child: Container(
+//           width: 60.0,
+//           height: 60.0,
+//           decoration: BoxDecoration(
+//             borderRadius: BorderRadius.all(Radius.elliptical(30.0, 30.0)),
+//             border: Border.all(width: 1.0, color: const Color(0xff2ec19e)),
+//           ),
+//         ),
+//       ),
+//     ],
+//   ),
+// );
 
 Widget _flight() {
   return Stack(

@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:BorderRulz/bordersRoute.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -25,6 +23,60 @@ Widget _home(BuildContext context) {
 
   final fromController = TextEditingController();
   final toController = TextEditingController();
+
+  final europeanCountries = [
+    'Albania',
+    'Andorra',
+    'Armenia',
+    'Austria',
+    'Azerbaijan',
+    'Belarus',
+    'Belgium',
+    'Bosnia and Herzegovina',
+    'Bulgaria',
+    'Croatia',
+    'Cyprus',
+    'Czech Republic',
+    'Denmark',
+    'Estonia',
+    'Finland',
+    'France',
+    'Georgia',
+    'Germany',
+    'Greece',
+    'Hungary',
+    'Iceland',
+    'Ireland',
+    'Italy',
+    'Kazakhstan',
+    'Kosovo',
+    'Latvia',
+    'Liechtenstein',
+    'Lithuania',
+    'Luxembourg',
+    'Macedonia',
+    'Malta',
+    'Moldova',
+    'Monaco',
+    'Montenegro',
+    'Netherlands',
+    'Norway',
+    'Poland',
+    'Portugal',
+    'Romania',
+    'Russia',
+    'San Marino',
+    'Serbia',
+    'Slovakia',
+    'Slovenia',
+    'Spain',
+    'Sweden',
+    'Switzerland',
+    'Turkey',
+    'Ukraine',
+    'United Kingdom',
+    'Vatican City'
+  ];
 
   return Scaffold(
     backgroundColor: const Color(0xffffffff),
@@ -123,7 +175,7 @@ Widget _home(BuildContext context) {
                     ),
                   ),
                   filled: true,
-                  hintText: "Country, city",
+                  hintText: "City, country",
                   hintStyle: TextStyle(
                     fontWeight: FontWeight.normal,
                   ),
@@ -177,7 +229,7 @@ Widget _home(BuildContext context) {
                     ),
                   ),
                   filled: true,
-                  hintText: "Country, city",
+                  hintText: "City, country",
                   hintStyle: TextStyle(
                     fontWeight: FontWeight.normal,
                   ),
