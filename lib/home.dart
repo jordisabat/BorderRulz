@@ -83,14 +83,6 @@ Widget _home(BuildContext context) {
     body: SingleChildScrollView(
       child: Stack(
         children: <Widget>[
-          // Container(
-          //     decoration: BoxDecoration(
-          //       image: DecorationImage(
-          //         image: AssetImage('images/new_york.jpg'),
-          //         fit: BoxFit.fitHeight,
-          //       ),
-          //     ),
-          //   ),
           Transform.translate(
             offset: Offset(-85.73, -50.93),
             child: SvgPicture.string(
@@ -236,7 +228,6 @@ Widget _home(BuildContext context) {
                   fillColor: Colors.white70),
             ),
           ),
-
           Positioned(
             bottom: 100.0,
             left: 80.0,
