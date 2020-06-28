@@ -2,16 +2,16 @@
   {
     "name": "Faro, Portugal",
     "address": "R. de Sao Pedro 10-20, 8000-343 Faro",
-    "ruleSet": 1
+    "place": 1
   },
   {
     "name": "Madrid, Spain",
     "address": "Real Casa de Correos, Madrid, Spain",
-    "ruleSet": 2
+    "place": 2
   },
   {
     "name": "Paris, France",
     "address": "Le Marais, 75004 Paris, France",
-    "ruleSet": 3
+    "place": 3
   }
 ]

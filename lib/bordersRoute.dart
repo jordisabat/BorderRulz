@@ -8,6 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'model/place.dart';
 
+
 class BordersRoute extends StatefulWidget {
   final String from;
   final String to;
@@ -90,7 +91,7 @@ class _BordersRouteState extends State<BordersRoute> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => PlaceRoute(_places[index])));
+                      builder: (context) => PlaceRoute(place: _places[index])));
             },
           );
         });

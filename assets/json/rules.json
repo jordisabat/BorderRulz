@@ -1,23 +1,30 @@
 [
   {
     "id": 1,
-    "ruleSet": 1,
+    "place": 1,
     "type": "quarentine",
     "description": "Quarentine is not mandatory unless infected",
     "severity": 1
   },
   {
     "id": 2,
-    "ruleSet": 1,
+    "place": 1,
     "type": "borderCrossCar",
     "description": "Only for crossborder workers and goods transport",
     "severity": 4
   },
   {
     "id": 3,
-    "ruleSet": 1,
+    "place": 1,
     "type": "borderCrossBoat",
     "description": "Boats can't dock unless quarentined for 15 days",
     "severity": 5
+  },
+  {
+    "id": 4,
+    "place": 1,
+    "type": "test",
+    "description": "No test required of any type",
+    "severity": 0
   }
 ]
