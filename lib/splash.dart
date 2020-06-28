@@ -17,7 +17,7 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     Timer(
-        Duration(seconds: 1),
+        Duration(seconds: 3),
         () => Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (BuildContext context) => Home())));
     return _splash();
@@ -52,23 +52,6 @@ Widget _splash() {
               ),
             ),
           ],
-        ),
-        Transform.translate(
-          offset: Offset(87.0, 249.0),
-          child: SizedBox(
-            width: 186.0,
-            height: 95.0,
-            child: Text(
-              'Border\nRulz',
-              style: TextStyle(
-                fontFamily: 'Ubuntu',
-                fontSize: 40,
-                color: const Color(0xffffffff),
-                fontWeight: FontWeight.w700,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
         ),
         Stack(
           children: <Widget>[
@@ -132,7 +115,7 @@ Widget _splash() {
               ],
             ),
             Transform.translate(
-              offset: Offset(320.0, 241.0),
+              offset: Offset(300.0, 181.0),
               child:
                   // Adobe XD layer: 'Flight' (component)
                   _flight(),
@@ -160,10 +143,27 @@ Widget _splash() {
                   _car(),
             ),
             Transform.translate(
-              offset: Offset(135.4, 427.75),
+              offset: Offset(135.4, 447.75),
               child:
                   // Adobe XD layer: 'Train' (component)
                   _flight(),
+            ),
+            Transform.translate(
+              offset: Offset(87.0, 249.0),
+              child: SizedBox(
+                width: 186.0,
+                height: 95.0,
+                child: Text(
+                  'Border\nRulz',
+                  style: TextStyle(
+                    fontFamily: 'Ubuntu',
+                    fontSize: 40,
+                    color: const Color(0xff0bc2c2),
+                    fontWeight: FontWeight.w700,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
             ),
           ],
         ),
