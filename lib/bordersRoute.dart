@@ -2,20 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class BordersRoute extends StatefulWidget {
-  BordersRoute({Key key}) : super(key: key);
+  final String from;
+  final String to;
+  BordersRoute({Key key, this.from, this.to}) : super(key: key);
 
   @override
-  _BordersRouteState createState() => _BordersRouteState();
+  _BordersRouteState createState() => _BordersRouteState(from, to);
 }
 
 class _BordersRouteState extends State<BordersRoute> {
+  final String from;
+  final String to;
+  _BordersRouteState(this.from, this.to);
+
   @override
   Widget build(BuildContext context) {
-    return _route();
+    return _route(this.from, this.to);
   }
 }
 
-Widget _route() {
+Widget _route(String from, String to) {
   return Scaffold(
     backgroundColor: const Color(0xffffffff),
     body: Stack(
@@ -107,7 +113,7 @@ Widget _route() {
           child:
               // Adobe XD layer: '497 Evergreen Rd. R…' (text)
               Text(
-            'Rua de Portugal 100, \n8000-956 Faro',
+            from,
             style: TextStyle(
               fontFamily: 'Ubuntu',
               fontSize: 14,
@@ -294,7 +300,7 @@ Widget _route() {
           child:
               // Adobe XD layer: 'Work' (text)
               Text(
-            'Slovenia',
+            to,
             style: TextStyle(
               fontFamily: 'Ubuntu',
               fontSize: 14,

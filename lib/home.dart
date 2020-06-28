@@ -14,18 +14,17 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    // Timer(
-    //     Duration(seconds: 1),
-    //     () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-    //         builder: (BuildContext context) => BordersRoute())));
-    return _home();
+    return _home(context);
   }
 }
 
-Widget _home() {
+Widget _home(BuildContext context) {
   const double leftPadding = 40.0;
   const double rightPadding = 40.0;
   const turquesa = Color(0xff0bc2c2);
+
+  final fromController = TextEditingController();
+  final toController = TextEditingController();
 
   return Scaffold(
     backgroundColor: const Color(0xffffffff),
@@ -96,6 +95,7 @@ Widget _home() {
             left: leftPadding + 5,
             right: rightPadding + 5,
             child: TextFormField(
+              controller: fromController,
               style: TextStyle(
                 color: turquesa,
                 fontWeight: FontWeight.bold,
@@ -149,6 +149,7 @@ Widget _home() {
             left: leftPadding + 5,
             right: rightPadding + 5,
             child: TextFormField(
+              controller: toController,
               style: TextStyle(
                 color: turquesa,
                 fontWeight: FontWeight.bold,
@@ -198,7 +199,14 @@ Widget _home() {
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              onPressed: () => print('GO!'),
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => BordersRoute(
+                          from: fromController.text,
+                          to: toController.text,
+                        )),
+              ),
               color: const Color(0xff0bc2c2),
               textColor: Colors.yellow,
               // padding: EdgeInsets.fromLTRB(100, 10, 100, 10),
