@@ -4,16 +4,16 @@ class Place {
   String name;
   String code;
   String address;
-  int ruleSet;
+  int place;
   //List<Rule> rules;
 
-  Place({this.name, this.code, this.address, this.ruleSet});
+  Place({this.name, this.code, this.address, this.place});
 
   Place.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     code = json['code'];
     address = json['address'];
-    ruleSet = json['ruleSet'];
+    place = json['place'];
   }
 
   Map<String, dynamic> toJson() {
@@ -21,32 +21,12 @@ class Place {
     data['name'] = this.name;
     data['code'] = this.code;
     data['address'] = this.address;
-    data['ruleSet'] = this.ruleSet;
+    data['place'] = this.place;
     return data;
-  }
-}
-
-class Rule {
-  int id;
-  Place place;
-  int placeId;
-  String type;
-  String description;
-  int severity;
-
-  Rule.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    placeId = json["place"];
-    type = json['type'];
-    description = json['description'];
-    severity = json['severity'];
   }
 
   @override
   String toString() {
-    return this.id.toString() +
-        this.type +
-        this.severity.toString() +
-        this.description;
+    return this.place.toString() + this.name + this.code;
   }
 }

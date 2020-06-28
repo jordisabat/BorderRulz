@@ -3,18 +3,18 @@
     "name": "Portugal",
     "code": "PT",
     "address": "R. de Sao Pedro 10-20, Faro",
-    "ruleSet": 1
+    "place": 1
   },
   {
     "name": "Spain",
     "code": "ES",
     "address": "Real Casa de Correos, Madrid",
-    "ruleSet": 2
+    "place": 2
   },
   {
     "name": "France",
     "code": "FR",
     "address": "Le Marais, 75004 Paris",
-    "ruleSet": 3
+    "place": 3
   }
 ]

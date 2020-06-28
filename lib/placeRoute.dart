@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 
 import 'bordersRoute.dart';
 import 'model/place.dart';
+import 'model/rule.dart';
 
 class PlaceRoute extends StatefulWidget {
   final Place place;
@@ -34,18 +35,20 @@ class _PlaceRouteState extends State<PlaceRoute> {
     List<dynamic> d = json.decode(file);
     return d
         .map<Rule>((e) => Rule.fromJson(e))
-        // .where((element) => element.placeId == place.place) TODO
+        .where((element) => element.placeId == place.place)
         .toList();
   }
 
   _loadRules() async {
     _rules = await returnObservations('assets/json/rules.json');
-    // quarentineRule = TODO FIX THIS
-    // _rules.firstWhere((element) => element.type == "quarentine");
-    // testRule = _rules.firstWhere((element) => element.type == "test");
+    quarentineRule =
+        _rules.firstWhere((element) => element.type == "quarentine");
+    testRule = _rules.firstWhere((element) => element.type == "test");
     setState(() {
       print(_rules.length);
       print(_rules);
+      print(quarentineRule);
+      print(testRule);
     });
   }
 
@@ -88,10 +91,25 @@ class _PlaceRouteState extends State<PlaceRoute> {
     return ListView.builder(
         itemCount: _rules == null ? 0 : _rules.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(_rules[index].type),
-            subtitle: Text(_rules[index].description),
-          );
+          return ruleWidgetSelector(_rules[index]);
         });
+  }
+
+  Widget ruleWidgetSelector(Rule rule) {
+    if (rule.type == 'quarentine') {
+      return _quarentineWidget(rule);
+    } else {
+      return ListTile(
+        title: Text(rule.type),
+        subtitle: Text(rule.description),
+      );
+    }
+  }
+
+  Widget _quarentineWidget(Rule rule) {
+      return ListTile(
+        title: Text(rule.type),
+        subtitle: Text(rule.description),
+      );
   }
 }
