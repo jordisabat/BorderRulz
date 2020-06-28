@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:BorderRulz/home.dart';
+import 'package:BorderRulz/placeRoute.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -80,7 +81,10 @@ class _BordersRouteState extends State<BordersRoute> {
           ),
         ),
         backgroundColor: const Color(0x10ffffff),
-        body: _myListView(context),
+        body: Padding(
+          padding: const EdgeInsets.only(top: 60.0),
+          child: _myListView(context),
+        ),
       ),
     );
   }
@@ -117,7 +121,13 @@ class _BordersRouteState extends State<BordersRoute> {
                               //This keeps the splash effect within the circle
                               borderRadius: BorderRadius.circular(
                                   1000.0), //Something large to ensure a circle
-                              //onTap: _messages,
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            PlaceRoute(_places[index])));
+                              },
                               child: Padding(
                                 padding: EdgeInsets.all(5.0),
                                 child: Text(

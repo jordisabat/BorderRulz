@@ -9,7 +9,7 @@ import 'model/place.dart';
 class PlaceRoute extends StatefulWidget {
   final Place place;
 
-  PlaceRoute({this.place});
+  PlaceRoute(this.place);
 
   @override
   _PlaceRouteState createState() => _PlaceRouteState(place);
