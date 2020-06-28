@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 class Place {
   String name;
   String code;
   String address;
   int ruleSet;
+  //List<Rule> rules;
 
   Place({this.name, this.code, this.address, this.ruleSet});
 
@@ -20,5 +23,30 @@ class Place {
     data['address'] = this.address;
     data['ruleSet'] = this.ruleSet;
     return data;
+  }
+}
+
+class Rule {
+  int id;
+  Place place;
+  int placeId;
+  String type;
+  String description;
+  int severity;
+
+  Rule.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    placeId = json["place"];
+    type = json['type'];
+    description = json['description'];
+    severity = json['severity'];
+  }
+
+  @override
+  String toString() {
+    return this.id.toString() +
+        this.type +
+        this.severity.toString() +
+        this.description;
   }
 }

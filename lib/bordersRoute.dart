@@ -36,7 +36,7 @@ class _BordersRouteState extends State<BordersRoute> {
   }
 
   _loadPlaces() async {
-    var data = await returnRoute('assets/json/route.json');
+    var data = await returnRoute('assets/json/routes.json');
     setState(() {
       _places = data;
     });
