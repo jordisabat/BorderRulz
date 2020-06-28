@@ -1,4 +1,4 @@
-
+import 'package:BorderRulz/bordersRoute.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -37,7 +37,7 @@ class PlaceRoute extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Home()),
+              MaterialPageRoute(builder: (context) => BordersRoute()),
             );
           },
         ),
