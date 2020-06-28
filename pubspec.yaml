@@ -35,3 +35,17 @@ flutter:
 
   assets:
     - assets/json/
+    - assets/fonts/
+    - assets/images/
+
+  fonts:
+    - family: Ubuntu
+      fonts:
+        - asset: assets/fonts/Ubuntu-BoldItalic.ttf
+        - asset: assets/fonts/Ubuntu-Bold.ttf
+        - asset: assets/fonts/Ubuntu-Italic.ttf
+        - asset: assets/fonts/Ubuntu-LightItalic.ttf
+        - asset: assets/fonts/Ubuntu-Light.ttf
+        - asset: assets/fonts/Ubuntu-MediumItalic.ttf
+        - asset: assets/fonts/Ubuntu-Medium.ttf
+        - asset: assets/fonts/Ubuntu-Regular.ttf

@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
       title: 'BorderRulz',
       theme: ThemeData(
         primarySwatch: Colors.green,
+        fontFamily: 'Ubuntu',
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Splash(),
