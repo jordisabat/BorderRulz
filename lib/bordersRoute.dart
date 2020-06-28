@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:BorderRulz/home.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +18,7 @@ class BordersRoute extends StatefulWidget {
 class _BordersRouteState extends State<BordersRoute> {
   final String from;
   final String to;
-  List<Place> _places = [];
+  var _places = [];
   final turquesa = Color(0xff0bc2c2);
 
   _BordersRouteState(this.from, this.to);
@@ -38,9 +37,6 @@ class _BordersRouteState extends State<BordersRoute> {
 
   _loadPlaces() async {
     _places = await returnObservations('assets/json/route.json');
-    setState(() {
-      print(_places.length);
-    });
   }
 
   @override
