@@ -128,7 +128,7 @@ class _PlaceRouteState extends State<PlaceRoute> {
                                     style:
                                         Theme.of(context).textTheme.headline4),
                                 SizedBox(width: 3),
-                                Text('35',
+                                Text('245',
                                     style:
                                         Theme.of(context).textTheme.subtitle1),
                                 SizedBox(width: 5),
@@ -176,7 +176,7 @@ class _PlaceRouteState extends State<PlaceRoute> {
                                     style:
                                         Theme.of(context).textTheme.headline4),
                                 SizedBox(width: 3),
-                                Text('35',
+                                Text('129',
                                     style:
                                         Theme.of(context).textTheme.subtitle1),
                                 SizedBox(width: 5),
@@ -184,7 +184,7 @@ class _PlaceRouteState extends State<PlaceRoute> {
                                     style:
                                         Theme.of(context).textTheme.headline5),
                                 SizedBox(width: 3),
-                                Text('12',
+                                Text('25',
                                     style:
                                         Theme.of(context).textTheme.subtitle1),
                               ],
@@ -224,7 +224,7 @@ class _PlaceRouteState extends State<PlaceRoute> {
                                     style:
                                         Theme.of(context).textTheme.headline4),
                                 SizedBox(width: 3),
-                                Text('35',
+                                Text('162',
                                     style:
                                         Theme.of(context).textTheme.subtitle1),
                                 SizedBox(width: 5),
@@ -232,7 +232,7 @@ class _PlaceRouteState extends State<PlaceRoute> {
                                     style:
                                         Theme.of(context).textTheme.headline5),
                                 SizedBox(width: 3),
-                                Text('12',
+                                Text('76',
                                     style:
                                         Theme.of(context).textTheme.subtitle1),
                               ],
@@ -258,7 +258,7 @@ class _PlaceRouteState extends State<PlaceRoute> {
                         style: Theme.of(context).textTheme.headline2),
                     SizedBox(height: 20),
                     Text(
-                      'When entering the Republic of Croatia, nationals of the Czech Republic, Hungary, Austria, Estonia, Latvia, Lithuania, Poland, Slovenia, Germany, and Slovakia are not required to provide any special reason for their entry (business, economic, tourist, etc.). They can enter the country under the same conditions as prior to COVID-19 outbreak, but still under epidemiological control and by complying to the recommendations issued by the Croatian Institute of Public Health. Nationals of other EU/EEA countries are required to announce their visit by filling in the form on the following site https://entercroatia.mup.hr/ and provide proof of accommodation.',
+                      'Only allowed for: nationals of EU27, Schengen Area countries (Liechsteinsten, Norway, Switzerland and Iceland) and their family members, passengers on flights from UK, Brazil and CPLP, USA, Canada, Venezuela and South-Africa. Suspension of visa processing for the remaining countries.',
                       style: TextStyle(
                         fontSize: 12,
                       ),
@@ -451,10 +451,24 @@ class _PlaceRouteState extends State<PlaceRoute> {
                     ),
                     SizedBox(height: 25),
                     Text(
-                      'Travellers from countries that are considered epidemiologically safe, can enter Slovenia without restrictions. Permanent or temporary residents from countries that are not on the list of epidemiologically safe countries, require a 14 day quarantine. The list of epidemiologically safe countries and its changes will be posted regularly on the web page of the National Institute of Public Health: www.nijz.si Exceptions exist for 1) Slovenian citizens and foreign nationals who are holders of a temporary or permanent residency in Slovenia from EU or Schengen, without any restrictions. 2)Persons providing services (certified). 3) Persons who cross the border for urgent personal matters. 4) Persons who are owners in the border area and active in agriculture. ',
-                      style: TextStyle(
-                        fontSize: 12,
-                      ),
+                      'From 00:00 of 23/6/20 to 23:59 of 28/6/20, the following special measures are adopted for the Metropolitan Area of ​​Lisbon:',
+                      style: TextStyle(fontSize: 12),
+                    ),
+                    Text(
+                      '- Access, circulation or permanence of people in public spaces, as well as gatherings of people on public roads, are limited to 10 people, unless they belong to the same household',
+                      style: TextStyle(fontSize: 12),
+                    ),
+                    Text(
+                      '- All retail and service establishments, as well as those in shopping centres, close at 20:00, except restaurants and catering establishments providing home delivery, directly or through an intermediary, which may not provide alcoholic beverages in the context of this activity',
+                      style: TextStyle(fontSize: 12),
+                    ),
+                    Text(
+                      '- The sale of alcoholic beverages in service areas or at fuel filling stations is prohibited and the consumption of alcoholic beverages in open spaces accessible to the public is prohibited, except for the outside spaces of catering and beverage establishments duly licensed for this purpose and until 20:00',
+                      style: TextStyle(fontSize: 12),
+                    ),
+                    Text(
+                      '- Disobedience is a crime.The Lisbon Metropolitan Area comprises the following municipalities: Alcochete, Almada, Amadora, Barreiro, Cascais, Lisbon, Loures, Mafra, Moita, Montijo, Odivelas, Oeiras, Palmela, Seixal, Sesimbra, Setúbal, Sintra and Vila Franca de Xira.',
+                      style: TextStyle(fontSize: 12),
                     ),
                   ],
                 ),
