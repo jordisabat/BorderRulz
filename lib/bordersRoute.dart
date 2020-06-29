@@ -5,7 +5,6 @@ import 'package:BorderRulz/placeRoute.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'XDComponent131.dart';
 import 'model/place.dart';
 
 class BordersRoute extends StatefulWidget {
@@ -178,7 +177,7 @@ class _BordersRouteState extends State<BordersRoute> {
                                                 0
                                             ? Theme.of(context).dividerColor
                                             : Theme.of(context).primaryColor,
-                                        width: 5.0),
+                                        width: 3.0),
                                     shape: BoxShape.circle,
                                   ),
                                   child: InkWell(
