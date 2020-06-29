@@ -58,7 +58,7 @@ class _BordersRouteState extends State<BordersRoute> {
             'LOCATION',
             style: TextStyle(
               fontFamily: 'Ubuntu',
-              fontSize: 16,
+              fontSize: 18,
               color: const Color(0xff0bc2c2),
               fontWeight: FontWeight.w700,
             ),
@@ -122,11 +122,13 @@ class _BordersRouteState extends State<BordersRoute> {
                               borderRadius: BorderRadius.circular(
                                   1000.0), //Something large to ensure a circle
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            PlaceRoute(_places[index])));
+                                showModalBottomSheet(
+                                    //backgroundColor: const Color(0xff707070),
+                                    enableDrag: true,
+                                    isScrollControlled: true,
+                                    context: context,
+                                    builder: (context) =>
+                                        PlaceRoute(_places[index]));
                               },
                               child: Padding(
                                 padding: EdgeInsets.all(5.0),
