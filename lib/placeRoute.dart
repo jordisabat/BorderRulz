@@ -41,9 +41,11 @@ class _PlaceRouteState extends State<PlaceRoute> {
 
   _loadRules() async {
     _rules = await returnObservations('assets/json/rules.json');
-    quarentineRule =
-        _rules.firstWhere((element) => element.type == "quarentine");
-    testRule = _rules.firstWhere((element) => element.type == "test");
+    quarentineRule = _rules.firstWhere(
+        (element) => element.type == "quarentine",
+        orElse: () => null);
+    testRule = _rules.firstWhere((element) => element.type == "test",
+        orElse: () => null);
     setState(() {
       print(_rules.length);
       print(_rules);
@@ -107,9 +109,9 @@ class _PlaceRouteState extends State<PlaceRoute> {
   }
 
   Widget _quarentineWidget(Rule rule) {
-      return ListTile(
-        title: Text(rule.type),
-        subtitle: Text(rule.description),
-      );
+    return ListTile(
+      title: Text(rule.type),
+      subtitle: Text(rule.description),
+    );
   }
 }
