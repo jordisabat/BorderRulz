@@ -173,7 +173,10 @@ class _BordersRouteState extends State<BordersRoute> {
                                 child: Ink(
                                   decoration: BoxDecoration(
                                     border: Border.all(
-                                        color: Theme.of(context).primaryColor,
+                                        color: _places[index].rules[0].status ==
+                                                0
+                                            ? Theme.of(context).dividerColor
+                                            : Theme.of(context).primaryColor,
                                         width: 3.0),
                                     shape: BoxShape.circle,
                                   ),
@@ -187,7 +190,10 @@ class _BordersRouteState extends State<BordersRoute> {
                                       child: FaIcon(
                                         FontAwesomeIcons.compressArrowsAlt,
                                         size: 20.0,
-                                        color: Theme.of(context).primaryColor,
+                                        color: _places[index].rules[0].status ==
+                                                0
+                                            ? Theme.of(context).dividerColor
+                                            : Theme.of(context).primaryColor,
                                       ),
                                     ),
                                   ),
@@ -199,7 +205,42 @@ class _BordersRouteState extends State<BordersRoute> {
                                 child: Ink(
                                   decoration: BoxDecoration(
                                     border: Border.all(
-                                        color: Theme.of(context).primaryColor,
+                                        color: _places[index].rules[1].status ==
+                                                0
+                                            ? Theme.of(context).dividerColor
+                                            : Theme.of(context).primaryColor,
+                                        width: 3.0),
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: InkWell(
+                                    //This keeps the splash effect within the circle
+                                    borderRadius: BorderRadius.circular(
+                                        1000.0), //Something large to ensure a circle
+                                    //onTap: _messages,
+                                    child: Padding(
+                                      padding: EdgeInsets.all(5.0),
+                                      child: FaIcon(
+                                        FontAwesomeIcons.random,
+                                        size: 20.0,
+                                        color: _places[index].rules[1].status ==
+                                                0
+                                            ? Theme.of(context).dividerColor
+                                            : Theme.of(context).primaryColor,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(top: 20, right: 5),
+                                child: Ink(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: _places[index].rules[2].status ==
+                                                0
+                                            ? Theme.of(context).dividerColor
+                                            : Theme.of(context).primaryColor,
                                         width: 3.0),
                                     shape: BoxShape.circle,
                                   ),
@@ -213,7 +254,10 @@ class _BordersRouteState extends State<BordersRoute> {
                                       child: FaIcon(
                                         FontAwesomeIcons.exchangeAlt,
                                         size: 20.0,
-                                        color: Theme.of(context).primaryColor,
+                                        color: _places[index].rules[2].status ==
+                                                0
+                                            ? Theme.of(context).dividerColor
+                                            : Theme.of(context).primaryColor,
                                       ),
                                     ),
                                   ),
@@ -225,33 +269,10 @@ class _BordersRouteState extends State<BordersRoute> {
                                 child: Ink(
                                   decoration: BoxDecoration(
                                     border: Border.all(
-                                        color: Theme.of(context).primaryColor,
-                                        width: 3.0),
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: InkWell(
-                                    //This keeps the splash effect within the circle
-                                    borderRadius: BorderRadius.circular(
-                                        1000.0), //Something large to ensure a circle
-                                    //onTap: _messages,
-                                    child: Padding(
-                                      padding: EdgeInsets.all(5.0),
-                                      child: FaIcon(
-                                        FontAwesomeIcons.compressArrowsAlt,
-                                        size: 20.0,
-                                        color: Theme.of(context).primaryColor,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 20, right: 5),
-                                child: Ink(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                        color: Theme.of(context).dividerColor,
+                                        color: _places[index].rules[3].status ==
+                                                0
+                                            ? Theme.of(context).dividerColor
+                                            : Theme.of(context).primaryColor,
                                         width: 3.0),
                                     shape: BoxShape.circle,
                                   ),
@@ -265,7 +286,10 @@ class _BordersRouteState extends State<BordersRoute> {
                                       child: FaIcon(
                                         FontAwesomeIcons.carAlt,
                                         size: 22.0,
-                                        color: Theme.of(context).dividerColor,
+                                        color: _places[index].rules[3].status ==
+                                                0
+                                            ? Theme.of(context).dividerColor
+                                            : Theme.of(context).primaryColor,
                                       ),
                                     ),
                                   ),
@@ -277,7 +301,10 @@ class _BordersRouteState extends State<BordersRoute> {
                                 child: Ink(
                                   decoration: BoxDecoration(
                                     border: Border.all(
-                                        color: Theme.of(context).primaryColor,
+                                        color: _places[index].rules[4].status ==
+                                                0
+                                            ? Theme.of(context).dividerColor
+                                            : Theme.of(context).primaryColor,
                                         width: 3.0),
                                     shape: BoxShape.circle,
                                   ),
@@ -291,7 +318,10 @@ class _BordersRouteState extends State<BordersRoute> {
                                       child: FaIcon(
                                         FontAwesomeIcons.plane,
                                         size: 18.0,
-                                        color: Theme.of(context).primaryColor,
+                                        color: _places[index].rules[4].status ==
+                                                0
+                                            ? Theme.of(context).dividerColor
+                                            : Theme.of(context).primaryColor,
                                       ),
                                     ),
                                   ),
@@ -303,7 +333,10 @@ class _BordersRouteState extends State<BordersRoute> {
                                 child: Ink(
                                   decoration: BoxDecoration(
                                     border: Border.all(
-                                        color: Theme.of(context).primaryColor,
+                                        color: _places[index].rules[5].status ==
+                                                0
+                                            ? Theme.of(context).dividerColor
+                                            : Theme.of(context).primaryColor,
                                         width: 3.0),
                                     shape: BoxShape.circle,
                                   ),
@@ -317,7 +350,10 @@ class _BordersRouteState extends State<BordersRoute> {
                                       child: FaIcon(
                                         FontAwesomeIcons.subway,
                                         size: 17.0,
-                                        color: Theme.of(context).primaryColor,
+                                        color: _places[index].rules[5].status ==
+                                                0
+                                            ? Theme.of(context).dividerColor
+                                            : Theme.of(context).primaryColor,
                                       ),
                                     ),
                                   ),

@@ -3,18 +3,96 @@
     "name": "Portugal",
     "code": "PT",
     "address": "R. de Sao Pedro 10-20, Faro",
-    "place": 1
+    "place": 1,
+    "rules": [
+      {
+        "type": "limits",
+        "status": 1
+      },
+      {
+        "type": "access",
+        "status": 1
+      },
+      {
+        "type": "transit",
+        "status": 1
+      },
+      {
+        "type": "car",
+        "status": 1
+      },
+      {
+        "type": "flight",
+        "status": 1
+      },
+      {
+        "type": "train",
+        "status": 0
+      }
+    ]
   },
   {
     "name": "Spain",
     "code": "ES",
     "address": "Real Casa de Correos, Madrid",
-    "place": 2
+    "place": 2,
+    "rules": [
+      {
+        "type": "limits",
+        "status": 1
+      },
+      {
+        "type": "access",
+        "status": 0
+      },
+      {
+        "type": "transit",
+        "status": 0
+      },
+      {
+        "type": "car",
+        "status": 1
+      },
+      {
+        "type": "flight",
+        "status": 1
+      },
+      {
+        "type": "train",
+        "status": 0
+      }
+    ]
   },
   {
     "name": "France",
     "code": "FR",
     "address": "Le Marais, 75004 Paris",
-    "place": 3
+    "place": 3,
+    "rules": [
+      {
+        "type": "limits",
+        "status": 1
+      },
+      {
+        "type": "access",
+        "status": 1
+      },
+      {
+        "type": "transit",
+        "status": 1
+      },
+      {
+        "type": "car",
+        "status": 1
+      },
+      {
+        "type": "flight",
+        "status": 0
+      },
+      {
+        "type": "train",
+        "status": 0
+      }
+    ]
   }
 ]
