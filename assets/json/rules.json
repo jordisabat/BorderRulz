@@ -26,5 +26,61 @@
     "type": "test",
     "description": "No test required of any type",
     "severity": 0
+  },
+  {
+    "id": 5,
+    "place": 1,
+    "type": "limits",
+    "description": "No travel limitations inside the country",
+    "severity": 0
+  },
+  {
+    "id": 6,
+    "place": 1,
+    "type": "transit",
+    "description": "Can transit without leaving the airport",
+    "severity": 0
+  },
+  {
+    "id": 7,
+    "place": 2,
+    "type": "quarentine",
+    "description": "Quarentine is mandatory ",
+    "severity": 1
+  },
+  {
+    "id": 8,
+    "place": 2,
+    "type": "borderCrossCar",
+    "description": "Only for crossborder workers and goods transport",
+    "severity": 4
+  },
+  {
+    "id": 9,
+    "place": 2,
+    "type": "borderCrossBoat",
+    "description": "Boats can't dock unless quarentined for 15 days",
+    "severity": 5
+  },
+  {
+    "id": 9,
+    "place": 2,
+    "type": "test",
+    "description": "No test required of any type",
+    "severity": 0
+  },
+  {
+    "id": 10,
+    "place": 2,
+    "type": "limits",
+    "description": "No travel limitations inside the country",
+    "severity": 0
+  },
+  {
+    "id": 11,
+    "place": 2,
+    "type": "transit",
+    "description": "Can transit without leaving the airport",
+    "severity": 0
   }
 ]
