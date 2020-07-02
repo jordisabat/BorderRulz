@@ -2,10 +2,10 @@
 
 ## Description
 
-Greenify incentives you do eco-friendly tasks, turns your cashbacks and discounts to GreenPoints that you can use to help those around you.
+Know the rules and restrictions of travelling during the virus pandemic? Select your destination and we help you find the way.
 
 ## Additional Information
 
-Greenify incentives you do eco-friendly tasks where Greenify turns your cashbacks and discounts to GreenPoints that you can use to help those around you, it can be a donation to help research of COVID, a donation to help orphans in your city or redeem your points for eco-friendly items that will help you on the journey to save the world. Complete missions or participate in eco-friendly and charity events around you to earn more GreenPoints.
+We are a group of 3 people (2 developers, 1 designer) with different nationalities, currently living in Portugal and trying to figure out how we can visit to our families or return to work during this pandemic. We want to share the latest information of the restrictions of each country worldwide to be best prepared for travelling and challenges along the way. The community can give their input, so we'll know with more certainty what is the real situation in every place/ border / country.
 
 https://www.youtube.com/watch?v=YJVOF7VLqxw
